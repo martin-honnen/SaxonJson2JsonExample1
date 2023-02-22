@@ -34,7 +34,9 @@ public class Main {
 
         Xslt30Transformer xslt30Transformer = xsltExecutable.load30();
 
-        xslt30Transformer.applyTemplates(input, xslt30Transformer.newSerializer(System.out));
+        XdmValue result = xslt30Transformer.applyTemplates(input);
+
+        System.out.println(result);
     }
 
     static void Json2Xml2Xml2Json(Processor processor) throws SaxonApiException {
@@ -46,6 +48,8 @@ public class Main {
 
         xslt30Transformer.setStylesheetParameters(Collections.singletonMap(new QName("json-uri"), new XdmAtomicValue("sample1.json")));
 
-        xslt30Transformer.callTemplate(null, xslt30Transformer.newSerializer(System.out));
+        XdmValue result = xslt30Transformer.callTemplate(null);
+
+        System.out.println(result);
     }
 }
